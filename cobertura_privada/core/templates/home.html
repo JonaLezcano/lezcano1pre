@@ -1,15 +1,18 @@
 {% extends 'base.html' %}
 
+{% load static %}  <!-- Carga los archivos estáticos -->
+
 {% block title %}Inicio{% endblock %}
 
 {% block content %}
-<div class="jumbotron">
-    <h1 class="display-4">¡Bienvenido a nuestra cobertura médica privada!</h1>
-    <p class="lead">Proveemos los mejores servicios médicos con profesionales altamente capacitados.</p>
-</div>
+<div class="content">
+    <h1>En Salud Integral, tu vida nos importa</h1>
 
-<form action="{% url 'buscar_medicos' %}" method="GET">
-    <input type="text" name="q" placeholder="Buscar médico..." value="{{ query }}">
-    <button type="submit">Buscar</button>
-</form>
+    <img src="{% static 'images/doctor.jpg' %}" alt="doctores" class="img-fluid" style="max-width: 100%; height: auto;">
+
+    <form action="{% url 'buscar_medicos' %}" method="get">
+        <input type="text" name="query" placeholder="Buscar médicos...">
+        <button type="submit" class="btn btn1">Buscar</button>
+    </form>
+</div>
 {% endblock %}
