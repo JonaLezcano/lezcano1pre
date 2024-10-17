@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscar Médicos</title>
+</head>
+<body>
+    <h1>Resultados de la Búsqueda</h1>
+    <form action="{% url 'buscar_medicos' %}" method="GET">
+        <input type="text" name="q" placeholder="Buscar médico..." value="{{ query }}">
+        <button type="submit">Buscar</button>
+    </form>
+    
+
+    {% if medicos %}
+        <ul>
+            {% for medico in medicos %}
+                <li>{{ medico.nombre }} {{ medico.apellido }} - Especialidad: {{ medico.especialidad }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No se encontraron médicos.</p>
+    {% endif %}
+</body>
+</html>

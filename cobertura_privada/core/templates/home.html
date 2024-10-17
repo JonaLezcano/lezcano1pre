@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Inicio{% endblock %}
+
+{% block content %}
+<div class="jumbotron">
+    <h1 class="display-4">¡Bienvenido a nuestra cobertura médica privada!</h1>
+    <p class="lead">Proveemos los mejores servicios médicos con profesionales altamente capacitados.</p>
+</div>
+
+<!-- Agregar el formulario de búsqueda aquí -->
+<form action="{% url 'buscar_medicos' %}" method="GET">
+    <input type="text" name="q" placeholder="Buscar médico..." value="{{ query }}">
+    <button type="submit">Buscar</button>
+</form>
+{% endblock %}

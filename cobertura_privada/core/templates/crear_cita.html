@@ -1,0 +1,39 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar Cita</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Registrar Cita</h1>
+        <form method="POST" action="{% url 'crear_cita' %}">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="medico" class="form-label">Seleccionar Médico</label>
+                <select class="form-select" id="medico" name="medico" required>
+                    <option value="" disabled selected>Seleccione un médico</option>
+                    
+                    <option value="medico1">Médico 1</option>
+                    <option value="medico2">Médico 2</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="fecha" class="form-label">Fecha de la Cita</label>
+                <input type="date" class="form-control" id="fecha" name="fecha" required>
+            </div>
+            <div class="mb-3">
+                <label for="hora" class="form-label">Hora de la Cita</label>
+                <input type="time" class="form-control" id="hora" name="hora" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Registrar Cita</button>
+            <a href="{% url 'home' %}" class="btn btn-secondary">Volver al Inicio</a>
+        </form>
+    </div>
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Cobertura Médica{% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <header>
+        
+        {% block navbar %}
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+               <div class="container-fluid">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="/">Inicio</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="serviciosDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Servicios
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="serviciosDropdown">
+                                    <li><a class="dropdown-item" href="#" onclick="loadForm('paciente')">Registrar Paciente</a></li>
+                                    <li><a class="dropdown-item" href="#" onclick="loadForm('medico')">Registrar Médico</a></li>
+                                    <li><a class="dropdown-item" href="#" onclick="loadForm('cita')">Registrar Cita</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/contacto">Contacto</a>
+                            </li>
+                        </ul>
+                    </div>
+               </div>
+            </nav>
+        {% endblock %}
+    </header>
+
+    <main class="container">
+        
+        <div id="dynamic-content">
+            {% block content %}
+           
+            {% endblock %}
+        </div>
+        
+
+{% if medicos %}
+    <h2>Resultados de la búsqueda:</h2>
+    <ul>
+        {% for medico in medicos %}
+            <li>
+                {{ medico.nombre }} {{ medico.apellido }} - 
+                {% if medico.especialidad %}{{ medico.especialidad.nombre }}{% else %}Sin especialidad{% endif %} - 
+                Matrícula: {{ medico.matricula }} - 
+                Email: {{ medico.email }} - 
+                Teléfono: {{ medico.telefono }}
+            </li>
+        {% empty %}
+            <li>No se encontraron médicos.</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+    </main>
+
+       
+    <script>
+        function loadForm(type) {
+            let url = '';
+            if (type === 'paciente') {
+                url = '/registrar_paciente/';
+            } else if (type === 'medico') {
+                url = '/registrar_medico/';
+            } else if (type === 'cita') {
+                url = '/registrar_cita/';
+            }
+
+            
+            fetch(url)
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('dynamic-content').innerHTML = data;
+                })
+                .catch(error => {
+                    console.error('Error al cargar el formulario:', error);
+                });
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+<footer class="text-center mt-4">
+    {% block footer %}
+        <p>&copy; 2024 Cobertura Médica Privada</p>
+    {% endblock %}
+</footer>
+</html>
