@@ -9,7 +9,7 @@
     <h1>Registrar Médico</h1>
     <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}  <!-- Esto renderiza todos los campos del formulario -->
+        {{ form.as_p }}  
         <button type="submit">Registrar</button>
     </form>
 </body>

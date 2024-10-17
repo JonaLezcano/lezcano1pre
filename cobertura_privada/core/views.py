@@ -22,8 +22,8 @@ def registrar_medico(request):
     if request.method == 'POST':
         form = MedicoForm(request.POST)
         if form.is_valid():
-            form.save()  # Guarda el médico en la base de datos
-            return redirect('listar_medicos')  # Redirige a la lista de médicos
+            form.save()  
+            return redirect('listar_medicos') 
     else:
         form = MedicoForm()
     return render(request, 'registrar_medico.html', {'form': form})
@@ -58,3 +58,5 @@ def buscar_medicos(request):
     }
     return render(request, 'buscar_medico.html', context)
 
+def about_me(request):
+    return render(request, 'about_me.html')
