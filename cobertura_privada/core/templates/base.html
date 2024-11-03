@@ -1,13 +1,15 @@
-<!DOCTYPE html>
+{% load static %}
+<!DOCTYPE html> 
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Cobertura Médica{% endblock %}</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
 </head>
 <body>
-    <header>
+    <header class="site-header">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -24,9 +26,23 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'registrar_medico' %}">Registrar Médico</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'registrar_cita' %}">Registrar Cita</a>
-                        </li>
+                        {% if user.is_authenticated %}
+                            {% if user.is_admin or user.is_paciente %}
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'registrar_cita' %}">Registrar Cita</a>
+                                </li>
+                            {% endif %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'perfil' %}">Perfil</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'logout' %}">Cerrar Sesión</a>
+                            </li>
+                        {% else %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'iniciar_sesion' %}">Iniciar Sesión</a>
+                            </li>
+                        {% endif %}
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'about_me' %}">About Me</a>
                         </li>
@@ -35,37 +51,40 @@
             </div>
         </nav>
     </header>
-    
 
-    <main class="container">
-        
+    <main class="site-main">
         <div id="dynamic-content">
             {% block content %}
-           
             {% endblock %}
         </div>
-        
 
-{% if medicos %}
-    <h2>Resultados de la búsqueda:</h2>
-    <ul>
-        {% for medico in medicos %}
-            <li>
-                {{ medico.nombre }} {{ medico.apellido }} - 
-                {% if medico.especialidad %}{{ medico.especialidad.nombre }}{% else %}Sin especialidad{% endif %} - 
-                Matrícula: {{ medico.matricula }} - 
-                Email: {{ medico.email }} - 
-                Teléfono: {{ medico.telefono }}
-            </li>
-        {% empty %}
-            <li>No se encontraron médicos.</li>
-        {% endfor %}
-    </ul>
-{% endif %}
-
+        {% if medicos %}
+            <h2>Resultados de la búsqueda:</h2>
+            <ul class="medicos-list">
+                {% for medico in medicos %}
+                    <li class="medico-item">
+                        {{ medico.nombre }} {{ medico.apellido }} - 
+                        {% if medico.especialidad %}{{ medico.especialidad.nombre }}{% else %}Sin especialidad{% endif %} - 
+                        Matrícula: {{ medico.matricula }} - 
+                        Email: {{ medico.email }} - 
+                        Teléfono: {{ medico.telefono }}
+                    </li>
+                {% empty %}
+                    <li class="medico-item">No se encontraron médicos.</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
     </main>
 
-       
+    <footer class="site-footer">
+        {% block footer %}
+            
+                <p>&copy; 2024 Cobertura Médica Privada</p>
+           
+        {% endblock %}
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         function loadForm(type) {
             let url = '';
@@ -77,7 +96,6 @@
                 url = '/registrar_cita/';
             }
 
-            
             fetch(url)
                 .then(response => response.text())
                 .then(data => {
@@ -88,12 +106,5 @@
                 });
         }
     </script>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-<footer class="text-center mt-4">
-    {% block footer %}
-        <p>&copy; 2024 Cobertura Médica Privada</p>
-    {% endblock %}
-</footer>
 </html>

@@ -1,26 +1,40 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Buscar Médicos</title>
+    <title>Buscar Médico</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"> <!-- Asegúrate de que la ruta sea correcta -->
 </head>
 <body>
-    <h1>Resultados de la Búsqueda</h1>
-    <form action="{% url 'buscar_medicos' %}" method="GET">
-        <input type="text" name="q" placeholder="Buscar médico..." value="{{ query }}">
-        <button type="submit">Buscar</button>
-    </form>
-    
+       
+    <main class="container">
+        <h1>Buscar Médico</h1>
+        
+        <form method="GET" action="{% url 'buscar_medicos' %}">
+            <input type="text" name="q" placeholder="Buscar por nombre, apellido o especialidad">
+            <button type="submit" class="btn btn-primary">Buscar</button>
+        </form>
 
-    {% if medicos %}
-        <ul>
-            {% for medico in medicos %}
-                <li>{{ medico.nombre }} {{ medico.apellido }} - Especialidad: {{ medico.especialidad }}</li>
-            {% endfor %}
-        </ul>
-    {% else %}
-        <p>No se encontraron médicos.</p>
-    {% endif %}
+        {% if resultados %}
+            <h2>Resultados de la búsqueda:</h2>
+            <ul>
+                {% for medico in resultados %}
+                    <li>{{ medico.nombre }} {{ medico.apellido }} - Especialidad: {{ medico.especialidad }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No se encontraron médicos que coincidan con tu búsqueda.</p>
+        {% endif %}
+        <br>
+        <a href="{% url 'home' %}">
+            <button class="btn btn-secondary">Volver a Inicio</button>
+        </a>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Nombre de la Empresa. Todos los derechos reservados.</p>
+    </footer>
 </body>
 </html>

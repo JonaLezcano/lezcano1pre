@@ -106,8 +106,10 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
+AUTH_USER_MODEL = 'core.Paciente' 
 
-LANGUAGE_CODE = 'en-us'
+
+LANGUAGE_CODE = 'es'
 
 TIME_ZONE = 'UTC'
 

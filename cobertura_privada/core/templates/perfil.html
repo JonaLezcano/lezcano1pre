@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar Paciente</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <main class="container">
+
+    <h2 class="formu">Bienvenido, {{ user.nombre }} {{ user.apellido }}</h2> <!-- Mostrar nombre y apellido del usuario -->
+<p><strong>Email:</strong> {{ user.email }}</p> <!-- Mostrar email como información no editable -->
+
+<h3>Información de Contacto</h3>
+<form method="post" class="form-centered" enctype="multipart/form-data">
+    {% csrf_token %}
+    
+    <!-- Mostrar nombre y apellido, pero no permitir su edición -->
+    <p><strong>Nombre:</strong> {{ user.nombre }}</p>
+    <p><strong>Apellido:</strong> {{ user.apellido }}</p>
+
+    <!-- Campos editables para teléfono y DNI -->
+    <p><strong>Teléfono:</strong> <input type="text" name="telefono" value="{{ user.telefono }}"></p>
+    <p><strong>DNI:</strong> <input type="text" name="dni" value="{{ user.dni }}"></p>
+
+    
+    <label for="avatar">Subir Avatar:</label>
+    <input type="file" name="avatar" accept="image/*">
+    <br>
+    <label for="new_password">Cambiar Contraseña:</label>
+    <input type="password" name="new_password">
+    <br>
+    <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+</form>
+
+<br>
+<a href="{% url 'registrar_cita' %}">
+    <button class="btn btn-primary">Registrar Cita</button>
+</a>
+<br>
+<a href="{% url 'home' %}">
+    <button class="btn btn-secondary">Volver a Inicio</button>
+</a>
+</main>
+</body>

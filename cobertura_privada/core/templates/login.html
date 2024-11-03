@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar Paciente</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <main class="container">
+        <h2>Iniciar Sesión</h2>
+        <form method="post" class="form-centered">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+        </form>
+        <br>
+    </form>
+    <br>
+    <a href="{% url 'home' %}">
+        <button class="btn btn-secondary">Volver a Inicio</button>
+    </a>
+</main>
+</body>
+</html>
