@@ -35,7 +35,7 @@ def registrar_paciente(request):
                 username += str(Paciente.objects.filter(username=username).count())
 
             paciente.username = username  # Asignar el username generado
-            paciente.set_password(form.cleaned_data['password'])  # Asegúrate de establecer la contraseña correctamente
+            paciente.set_password(form.cleaned_data['password']) 
             paciente.save()
 
             messages.success(request, 'Paciente registrado exitosamente.')

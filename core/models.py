@@ -57,7 +57,7 @@ class PacienteManager(BaseUserManager):
         extra_fields.setdefault('is_staff', True)
         extra_fields.setdefault('is_superuser', True)
 
-        # Asegúrate de incluir el username al crear el superusuario
+        
         if 'username' not in extra_fields:
             extra_fields['username'] = email  # Usar el email como username
 

@@ -7,11 +7,11 @@ class PacienteForm(forms.ModelForm):
 
     class Meta:
         model = Paciente
-        fields = ['nombre', 'apellido', 'email', 'password']  # Asegúrate de incluir todos los campos requeridos
+        fields = ['nombre', 'apellido', 'email', 'password'] 
 
     def clean_password(self):
         password = self.cleaned_data.get('password')
-        if len(password) < 8:  # Puedes ajustar la longitud mínima según tus necesidades
+        if len(password) < 8:  
             raise forms.ValidationError("La contraseña debe tener al menos 8 caracteres.")
         return password
 
