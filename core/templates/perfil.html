@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Perfil de {{ user.first_name }}{% endblock %}
+
+{% block content %}
+<main class="container">
+    <h2 class="formu">Bienvenido, {{ user.first_name }} {{ user.last_name }}</h2>
+    <p><strong>Email:</strong> {{ user.email }}</p>
+
+    <h3>Información de Contacto</h3>
+    <form method="post" class="form-centered" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% if user.avatar %}
+    <img src="{{ user.avatar.url }}" alt="Avatar" width="100" height="100">
+{% else %}
+    <img src="{% static 'default-avatar.png' %}" alt="Avatar predeterminado" width="100" height="100">
+{% endif %}
+
+        <!-- Mostrar nombre y apellido, pero no permitir su edición -->
+        <p><strong>Nombre:</strong> {{ user.nombre }}</p>
+        <p><strong>Apellido:</strong> {{ user.apellido }}</p>
+
+        <!-- Campos editables para teléfono y DNI -->
+        <p><strong>Teléfono:</strong> <input type="text" name="telefono" value="{{ user.telefono }}"></p>
+        <p><strong>DNI:</strong> <input type="text" name="dni" value="{{ user.dni }}"></p>
+
+        <label for="avatar">Subir Avatar:</label>
+        <input type="file" name="avatar" accept="image/*">
+        <br>
+        <label for="new_password">Cambiar Contraseña:</label>
+        <input type="password" name="new_password">
+        <br>
+        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+    </form>
+
+    <br>
+    <a href="{% url 'registrar_cita' %}">
+        <button class="btn btn-primary">Registrar Cita</button>
+    </a>
+    <br>
+    
+    
+</main>
+{% endblock %}

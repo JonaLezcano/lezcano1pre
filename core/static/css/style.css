@@ -1,0 +1,229 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif; /* Tipo de fuente principal */
+    background-color: #f0f0f0; /* Color de fondo */
+    margin: 0; /* Eliminar márgenes */
+    padding: 0; /* Eliminar relleno */
+    display: flex; /* Usar Flexbox */
+    flex-direction: column; /* Colocar elementos en columna */
+    height: 100vh; /* Altura completa de la ventana */
+    justify-content: center;
+    align-items: center;
+}
+
+/* Contenedor principal */
+.container {
+    max-width: 800px; /* Ancho máximo */
+    width: 100%; /* Ancho completo */
+    padding: 20px; /* Espacio interno */
+    background-color: #ffffff; /* Fondo blanco para el contenido */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+}
+
+/* Estilos del encabezado */
+header {
+    width: 100%; /* Ancho completo */
+    background-color: #007bff; /* Color de fondo del encabezado */
+    color: white; /* Color del texto */
+    padding: 10px 0; /* Espaciado interno */
+    text-align: center; /* Centrar texto */
+}
+
+/* Navegación */
+.navbar {
+    display: flex; /* Usar flexbox para el menú */
+    justify-content: space-between; /* Separar los elementos del menú */
+    align-items: center; /* Centrar verticalmente */
+    padding: 10px 20px; /* Espaciado interno */
+
+}
+.navbar ul {
+    list-style: none; /* Sin viñetas en la lista */
+    margin: 0; /* Sin márgenes */
+    padding: 0; /* Sin relleno */
+    display: flex; /* Usar flexbox para los enlaces */
+}
+
+.navbar li {
+    margin: 0 15px; /* Espaciado entre enlaces */
+}
+
+.navbar a {
+    color: black; /* Color del texto */
+    text-decoration: none; /* Sin subrayado */
+    font-weight: bold; /* Texto en negrita */
+}
+
+/* Cambios en el color al pasar el ratón sobre los enlaces */
+.navbar a:hover {
+    text-decoration: underline; /* Subrayado al pasar el ratón */
+}
+
+main {
+    flex: 1; /* Permite que el main ocupe el espacio restante */
+    display: flex; /* Usar Flexbox para centrar el contenido */
+    align-items: center; /* Centrar verticalmente */
+    justify-content: center; /* Centrar horizontalmente */
+    padding: 20px; /* Espaciado interno */
+    min-height: 80vh;
+}
+/* Estilos del pie de página */
+footer {
+    width: 100%; /* Ancho completo */
+    background-color: #007bff; /* Color de fondo del pie de página */
+    color: white; /* Color del texto */
+    text-align: center; /* Centrar texto */
+    padding: 10px 0; /* Espaciado interno */
+    position: absolute; /* Posicionar pie de página al final */
+    bottom: 0; /* Alinear al fondo */
+    clear: both;
+    margin-top: 20px;
+}
+
+/* Tipografía para encabezados */
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Playfair Display", Georgia, "Times New Roman", serif; /* Fuente serif para encabezados */
+    color: #343a40; /* Color oscuro para los títulos */
+    margin: 20px 0; /* Margen arriba y abajo */
+    text-align: center; /* Centrar encabezados */
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;  /* Centra verticalmente */
+    align-items: center;      /* Centra horizontalmente */
+    min-height: 80vh;        /* Asegura que el contenedor ocupe la altura de la ventana */
+}
+
+.form-centered {
+    width: 100%;              /* Asegura que el formulario ocupe el 100% del ancho */
+    max-width: 400px;        /* Ancho máximo del formulario */
+    background-color: #f8f9fa; /* Fondo claro para el formulario */
+    padding: 20px;           /* Espacio interno */
+    border-radius: 5px;      /* Esquinas redondeadas */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra para un efecto elevado */
+}
+
+
+.btn {
+    margin-top: 10px;        /* Espacio encima de los botones */
+    width: 100%;             /* Hacer botones de ancho completo */
+}
+
+.btn-primary {
+    background-color: #007bff; /* Color de fondo del botón de registrar */
+    border-color: #007bff;     /* Color del borde del botón de registrar */
+}
+
+.btn-primary:hover {
+    background-color: #0056b3; /* Color de fondo al pasar el mouse sobre el botón de registrar */
+}
+
+.btn-secondary {
+    background-color: #6c757d; /* Color de fondo del botón de volver */
+    border-color: #6c757d;     /* Color del borde del botón de volver */
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268; /* Color de fondo al pasar el mouse sobre el botón de volver */
+}
+
+
+
+/* Estilo para el logotipo del encabezado */
+.blog-header-logo {
+    font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+    font-size: 2.25rem; /* Tamaño de fuente del logotipo */
+}
+
+/* Enlace del logotipo del encabezado */
+.blog-header-logo:hover {
+    text-decoration: none; /* Sin subrayado al pasar el ratón */
+}
+
+/* Ajustes para la lista de médicos */
+.list-group {
+    margin-top: 20px; /* Espaciado superior para listas */
+}
+
+.list-group-item {
+    display: flex; /* Flexbox para los ítems */
+    justify-content: space-between; /* Separar contenido */
+    background-color: #e9ecef; /* Color de fondo de cada ítem */
+    border: 1px solid #ced4da; /* Borde de cada ítem */
+}
+
+.list-group-item:hover {
+    background-color: #d1e7dd; /* Color al pasar el mouse */
+}
+
+/* Estilo de la paginación */
+.blog-pagination {
+    margin-bottom: 4rem; /* Espaciado inferior para paginación */
+}
+
+/* Estilo de los posts del blog */
+.blog-post {
+    margin-bottom: 4rem; /* Espaciado inferior para los posts */
+}
+
+.blog-post-meta {
+    margin-bottom: 1.25rem; /* Espaciado inferior para metadatos del post */
+    color: #727272; /* Color gris para los metadatos */
+}
+
+/* Estilo para botones */
+.btn {
+    background-color: #007bff; /* Color del botón */
+    color: white; /* Color del texto */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 10px 15px; /* Espaciado interno */
+    cursor: pointer; /* Cambiar el cursor al pasar el ratón */
+    transition: background-color 0.3s; /* Transición suave para el color de fondo */
+}
+
+.btn:hover {
+    background-color: #0056b3; /* Color de fondo al pasar el ratón */
+}
+
+.about-me-container {
+    max-width: 800px; /* Ancho máximo del contenedor */
+    margin: 50px auto; /* Centramos el contenedor */
+    padding: 20px; /* Espaciado interno */
+    background: #fff; /* Fondo blanco */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+/* Título */
+.about-me-title {
+    font-size: 2.5em; /* Tamaño de fuente grande para el título */
+    color: #007bff; /* Color azul */
+    margin-bottom: 20px; /* Espaciado debajo del título */
+}
+
+/* Estilo del párrafo */
+.about-me-description {
+    font-size: 1.1em; /* Tamaño de fuente para el párrafo */
+    margin-bottom: 20px; /* Espaciado debajo del párrafo */
+}
+
+/* Estilo del botón */
+.btn-about {
+    background-color: #007bff; /* Color del botón */
+    color: #fff; /* Color del texto del botón */
+    border: none; /* Sin borde */
+    padding: 10px 20px; /* Espaciado interno */
+    border-radius: 5px; /* Bordes redondeados */
+    font-size: 1em; /* Tamaño de fuente del botón */
+    cursor: pointer; /* Cambiar el cursor al pasar el ratón */
+    transition: background-color 0.3s; /* Transición suave */
+}
+
+/* Efecto al pasar el ratón sobre el botón */
+.btn-about:hover {
+    background-color: #0056b3; /* Color más oscuro al pasar el ratón */
+}

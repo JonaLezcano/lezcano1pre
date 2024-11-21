@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Mis Citas{% endblock %}
+
+{% block content %}
+<h2>Mis Citas</h2>
+
+{% if citas %}
+    <ul>
+        {% for cita in citas %}
+            <li>{{ cita.medico.nombre }} - {{ cita.fecha }} a las {{ cita.hora }}</li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No tienes citas agendadas.</p>
+{% endif %}
+{% endblock %}

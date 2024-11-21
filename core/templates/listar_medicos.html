@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}Lista de Médicos{% endblock %}
+
+{% block content %}
+<h1>Médicos Disponibles</h1>
+
+<ul>
+    {% for medico in medicos %}
+        <li>{{ medico.nombre }} {{ medico.apellido }} - Especialidad: {{ medico.especialidad }}</li>
+    {% empty %}
+        <li>No se encontraron médicos.</li>
+    {% endfor %}
+</ul>
+
+<div class="actions">
+    
+    <a href="{% url 'buscar_medicos' %}">Buscar Médico</a>
+</div>
+{% endblock %}

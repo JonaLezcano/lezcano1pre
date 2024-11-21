@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container about-me-container">
+    <h1 class="about-me-title">Hola!</h1>
+    <p class="about-me-description">
+        Mi nombre es Jonathan Lezcano. Soy parte del curso de Python en Coderhouse, además de estar realizando cursos en React, Node.js, SQL y MongoDB.
+    </p>
+    <h2 class="about-me-title">¡Espero hayas disfrutado de la web!</h2>
+    <a href="{% url 'home' %}">
+        <button class="btn-about">Volver a Inicio</button>
+    </a>
+</div>
+{% endblock %}
+

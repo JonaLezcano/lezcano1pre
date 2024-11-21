@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}Buscar Médico{% endblock %}
+
+{% block content %}
+<main class="container">
+    <h1>Buscar Médico</h1>
+    
+    <form method="GET" action="{% url 'buscar_medicos' %}">
+        <input type="text" name="q" placeholder="Buscar por nombre, apellido o especialidad">
+        <button type="submit" class="btn btn-primary">Buscar</button>
+    </form>
+
+    {% if resultados %}
+        <h2>Resultados de la búsqueda:</h2>
+        <ul>
+            {% for medico in resultados %}
+                <li>{{ medico.nombre }} {{ medico.apellido }} - Especialidad: {{ medico.especialidad }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No se encontraron médicos que coincidan con tu búsqueda.</p>
+    {% endif %}
+    <br>
+    <a href="{% url 'home' %}">
+        <button class="btn btn-secondary">Volver a Inicio</button>
+    </a>
+</main>
+
+<footer>
+    <p>&copy; 2024 Nombre de la Empresa. Todos los derechos reservados.</p>
+</footer>
+{% endblock %}
