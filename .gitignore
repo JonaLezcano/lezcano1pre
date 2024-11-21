@@ -1,0 +1,45 @@
+# Ignorar archivos de base de datos
+*.sqlite3
+
+# Ignorar archivos de entorno virtual
+venv/
+env/
+.venv/
+.env/
+
+# Ignorar archivos de configuración de IDE
+*.pyc
+__pycache__/
+*.pyo
+*.pyd
+
+# Ignorar archivos de entorno de desarrollo
+*.log
+
+# Ignorar archivos de configuración de VS Code
+.vscode/
+
+# Ignorar archivos de caché de Django
+*.log
+*.pot
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+db.sqlite3
+
+# Ignorar archivos de configuración de otros IDE
+.idea/
+
+# Ignorar archivos de pruebas
+*.coverage
+.coverage.*
+nosetests.xml
+coverage.xml
+*.cover
+*.log
+
+# Otros archivos que podrías querer ignorar
+*.DS_Store
+*.bak
+*.tmp
